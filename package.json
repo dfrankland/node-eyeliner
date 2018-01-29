@@ -1,0 +1,32 @@
+{
+  "name": "eyeliner",
+  "version": "0.0.0",
+  "description": "Native bindings for eyeliner, a CSS inliner for making emails.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfrankland/node-eyeliner.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "email",
+    "inliner"
+  ],
+  "author": "Dylan Frankland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfrankland/node-eyeliner/issues"
+  },
+  "homepage": "https://github.com/dfrankland/node-eyeliner#readme",
+  "main": "./native/index.node",
+  "files": [
+    "native/index.node"
+  ],
+  "scripts": {
+    "build": "neon build"
+  },
+  "devDependencies": {
+    "neon-cli": "^0.1.22"
+  },
+  "dependencies": {}
+}
