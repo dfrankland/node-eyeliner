@@ -20,10 +20,13 @@
   "homepage": "https://github.com/dfrankland/node-eyeliner#readme",
   "main": "./native/index.node",
   "files": [
-    "native/index.node"
+    "native/Cargo.toml",
+    "native/build.rs",
+    "native/src/"
   ],
   "scripts": {
-    "build": "neon build"
+    "build": "neon build",
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "neon-cli": "^0.1.22"
