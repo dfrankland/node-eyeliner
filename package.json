@@ -1,6 +1,6 @@
 {
   "name": "eyeliner",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Native bindings for eyeliner, a CSS inliner for making emails.",
   "repository": {
     "type": "git",
