@@ -1,82 +1,95 @@
+use neon::{
+    context::Context,
+    handle::Handle,
+    prelude::*,
+    result::Throw,
+    types::{JsArray, JsNull, JsObject, JsUndefined, JsValue},
+};
 use std::collections::HashMap;
 
-use neon::vm::Throw;
-use neon::scope::Scope;
-use neon::mem::Handle;
-use neon::js::{JsObject, JsArray};
-use neon::js::Object;
-use neon::js::Variant as JsType;
-
-pub fn get_bool<'a, S: Scope<'a>, E: From<Throw>>(scope: &mut S, obj: Handle<'a, JsObject>, property: &str) -> Result<Option<bool>, E> {
-    Ok(
-        match obj.get(scope, property)?.variant() {
-            JsType::Boolean(boolean) => Some(boolean.value()),
-            JsType::Null(_) | JsType::Undefined(_) => None,
-            _ => panic!(format!("`{}` is not a boolean.", property)),
-        }
-    )
+pub fn is_null_or_undefined<'a, U: Value + 'a>(handle: Handle<'a, U>) -> bool {
+    handle.is_a::<JsNull>() || handle.is_a::<JsUndefined>()
 }
 
-fn js_string_to_string(js_string: &JsType, err: String) -> String {
-    match *js_string {
-        JsType::String(string) => string.value(),
-        _ => panic!(err),
+pub fn get_bool<'a, C: Context<'a>, E: From<Throw>>(
+    cx: &mut C,
+    obj: Handle<'a, JsObject>,
+    property: &str,
+) -> Result<Option<bool>, E> {
+    let property_value = obj.get(cx, property)?;
+
+    let value = if is_null_or_undefined(property_value) {
+        None
+    } else {
+        Some(
+            property_value
+                .downcast_or_throw::<JsBoolean, C>(cx)?
+                .value(),
+        )
+    };
+
+    Ok(value)
+}
+
+fn js_string_to_string<'a, C: Context<'a>, E: From<Throw>>(
+    cx: &mut C,
+    js_string: &Handle<JsValue>,
+) -> Result<String, E> {
+    Ok(js_string.downcast_or_throw::<JsString, C>(cx)?.value())
+}
+
+fn js_array_to_vec_of_str<'a, C: Context<'a>, E: From<Throw>>(
+    cx: &mut C,
+    arr: Handle<'a, JsArray>,
+) -> Result<Vec<String>, E> {
+    let mut vec_of_strings = vec![];
+    for js_string in arr.to_vec(cx)?.iter() {
+        vec_of_strings.push(js_string_to_string(cx, js_string)?);
     }
-}
-
-fn js_array_to_vec_of_str<'a, S: Scope<'a>, E: From<Throw>>(scope: &mut S, arr: Handle<'a, JsArray>, property: &str) -> Result<Vec<String>, E> {
-    let js_vec = arr.to_vec(scope)?;
-
-    let vec_of_strings: Vec<_> = js_vec.iter().enumerate().map(
-        move |(index, js_value)| {
-            let js_string = js_value.variant();
-            let err = format!("`{}` contains a value that is not a string at index {}.", property, index);
-            js_string_to_string(&js_string, err)
-        }
-    ).collect();
-
     Ok(vec_of_strings)
 }
 
-pub fn get_vec_of_strings<'a, S: Scope<'a>, E: From<Throw>>(scope: &mut S, obj: Handle<'a, JsObject>, property: &str) -> Result<Option<Vec<String>>, E> {
-    let js_value = obj.get(scope, property)?;
+pub fn get_vec_of_strings<'a, C: Context<'a>, E: From<Throw>>(
+    cx: &mut C,
+    obj: Handle<'a, JsObject>,
+    property: &str,
+) -> Result<Option<Vec<String>>, E> {
+    let property_value = obj.get(cx, property)?;
 
-    Ok(
-        match js_value.variant() {
-            JsType::Array(array) => Some(js_array_to_vec_of_str(scope, array, property)?),
-            JsType::Null(_) | JsType::Undefined(_) => None,
-            _ => panic!(format!("`{}` is not an array.", property)),
-        }
-    )
+    if is_null_or_undefined(property_value) {
+        return Ok(None);
+    }
+
+    let js_array = property_value.downcast_or_throw::<JsArray, C>(cx)?;
+
+    let value = js_array_to_vec_of_str(cx, js_array)?;
+
+    Ok(Some(value))
 }
 
-pub fn get_hashmap_of_strings<'a, S: Scope<'a>, E: From<Throw>>(scope: &mut S, obj: Handle<'a, JsObject>, property: &str) -> Result<Option<HashMap<String, String>>, E> {
-    let js_value = obj.get(scope, property)?;
+pub fn get_hashmap_of_strings<'a, C: Context<'a>, E: From<Throw>>(
+    cx: &mut C,
+    obj: Handle<'a, JsObject>,
+    property: &str,
+) -> Result<Option<HashMap<String, String>>, E> {
+    let property_value = obj.get(cx, property)?;
 
-    let js_object = match js_value.variant() {
-        JsType::Object(object) => object,
-        JsType::Null(_) | JsType::Undefined(_) => return Ok(None),
-        _ => panic!(format!("`{}` is not an object.", property)),
-    };
+    if is_null_or_undefined(property_value) {
+        return Ok(None);
+    }
 
-    let js_array = js_object.get_own_property_names(scope)?;
+    let js_object = property_value.downcast_or_throw::<JsObject, C>(cx)?;
 
-    let object_properties = js_array_to_vec_of_str(
-        scope,
-        js_array,
-        &format!("Object.keys({})", property),
-    )?;
+    let js_array = js_object.get_own_property_names(cx)?;
+    let value_keys = js_array_to_vec_of_str(cx, js_array)?;
 
-    let object_entries = object_properties.iter().fold(
-        HashMap::new(),
-        |mut hashmap, key| {
-            let js_string = js_object.get(scope, key.as_ref()).unwrap();
-            let err = format!("`{}` property in {} is not a string.", key, property);
-            let value = js_string_to_string(&js_string.variant(), err);
-            hashmap.insert(key.clone(), value);
-            hashmap
-        }
-    );
+    let mut value = HashMap::new();
 
-    Ok(Some(object_entries))
+    for value_property in value_keys.iter() {
+        let js_string = js_object.get(cx, value_property.as_ref())?;
+        let string = js_string_to_string(cx, &js_string)?;
+        value.insert(value_property.clone(), string);
+    }
+
+    Ok(Some(value))
 }

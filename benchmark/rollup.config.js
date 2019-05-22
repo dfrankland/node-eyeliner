@@ -22,7 +22,6 @@ export default {
             },
           },
         ],
-        '@babel/preset-stage-0',
       ],
     }),
   ],

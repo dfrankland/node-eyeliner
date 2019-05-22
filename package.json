@@ -29,7 +29,7 @@
     "postinstall": "npm run build"
   },
   "devDependencies": {
-    "neon-cli": "^0.1.22"
+    "neon-cli": "^0.2.0"
   },
   "dependencies": {}
 }

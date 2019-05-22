@@ -10,15 +10,14 @@
     "benchmark": "npm start"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.35",
-    "@babel/preset-env": "^7.0.0-beta.35",
-    "@babel/preset-stage-0": "^7.0.0-beta.35",
-    "rollup": "^0.52.2",
-    "rollup-plugin-babel": "^4.0.0-beta.0"
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "rollup": "^1.12.3",
+    "rollup-plugin-babel": "^4.3.2"
   },
   "dependencies": {
     "benchmark": "^2.1.4",
     "eyeliner": "..",
-    "juice": "^4.2.2"
+    "juice": "^5.2.0"
   }
 }
