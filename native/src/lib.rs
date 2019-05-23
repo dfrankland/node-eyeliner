@@ -1,18 +1,20 @@
 mod js_object_utils;
 mod options;
+mod resources;
 mod settings;
 
 use crate::{
     js_object_utils::is_null_or_undefined, options::js_options_object_to_rust_options_struct,
-    settings::js_settings_object_to_rust_settings_struct,
+    resources::ResourceReader, settings::js_settings_object_to_rust_settings_struct,
 };
-use eyeliner::inline;
+use eyeliner::{inline, servo_config::opts, servo_embedder_traits};
 use neon::{
     context::FunctionContext,
     prelude::*,
     register_module,
     types::{JsBoolean, JsObject, JsString},
 };
+use std::path::PathBuf;
 
 #[cfg_attr(feature = "cargo-clippy", allow(needless_pass_by_value))]
 fn default(mut cx: FunctionContext) -> JsResult<JsString> {
@@ -65,6 +67,17 @@ fn default(mut cx: FunctionContext) -> JsResult<JsString> {
     Ok(cx.string(&result))
 }
 
+fn set_prefs(mut cx: FunctionContext) -> JsResult<JsUndefined> {
+    let path = cx
+        .argument::<JsString>(0)?
+        .downcast_or_throw::<JsString, FunctionContext>(&mut cx)?;
+    let prefs = PathBuf::from(path.value());
+    let resource_reader = ResourceReader { prefs };
+    servo_embedder_traits::resources::set(Box::new(resource_reader));
+    opts::set_options(opts::default_opts());
+    Ok(cx.undefined())
+}
+
 register_module!(mut module, {
     // Register as an ES Module
     let es_module = JsObject::new(&mut module);
@@ -84,6 +97,10 @@ register_module!(mut module, {
     module
         .export_function("default", default)
         .expect("Can't export `default` function.");
+
+    module
+        .export_function("setPrefs", set_prefs)
+        .expect("Can't export `setPrefs` function.");
 
     Ok(())
 });

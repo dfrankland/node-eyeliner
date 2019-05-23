@@ -2,9 +2,11 @@
 
 import { Suite } from 'benchmark';
 import juice from 'juice';
-import eyeliner from 'eyeliner';
+import eyeliner, { setPrefs } from 'eyeliner';
 import { readFileSync } from 'fs';
 import { resolve as resolvePath } from 'path';
+
+setPrefs(resolvePath(__dirname, '../../resources/prefs.json'));
 
 const createSuite = (title) => {
   const suite = new Suite();
