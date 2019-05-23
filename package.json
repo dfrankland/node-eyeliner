@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/dfrankland/node-eyeliner#readme",
   "main": "./native/index.node",
+  "types": "./native/index.d.ts",
   "files": [
     "native/Cargo.toml",
     "native/build.rs",
