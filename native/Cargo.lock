@@ -284,7 +284,7 @@ dependencies = [
 [[package]]
 name = "derive_common"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "darling 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "proc-macro2 0.4.26 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -342,7 +342,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "embedder_traits"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "crossbeam-channel 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "ipc-channel 0.11.2 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -389,7 +389,7 @@ dependencies = [
 [[package]]
 name = "eyeliner"
 version = "0.1.0"
-source = "git+https://github.com/dfrankland/eyeliner.git#8f3675c072fe730f15f29e74c960fc8045d79992"
+source = "git+https://github.com/dfrankland/eyeliner.git#d4960ea8e0e8615526460fc6de78412a3ebf0d66"
 dependencies = [
  "html5ever 0.23.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "kuchiki 0.7.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -405,7 +405,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "fallible"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "hashglobe 0.1.0 (git+https://github.com/dfrankland/servo-css-parser)",
  "smallvec 0.6.7 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -512,7 +512,7 @@ dependencies = [
 [[package]]
 name = "hashglobe"
 version = "0.1.0"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "libc 0.2.44 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -763,7 +763,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "malloc_size_of"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "app_units 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "crossbeam-channel 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -899,7 +899,7 @@ dependencies = [
 [[package]]
 name = "msg"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "malloc_size_of 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
  "malloc_size_of_derive 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1167,7 +1167,7 @@ name = "regex-syntax"
 version = "0.5.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
- "ucd-util 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ucd-util 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -1207,7 +1207,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "selectors"
 version = "0.21.0"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "cssparser 0.25.5 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1296,11 +1296,12 @@ dependencies = [
 [[package]]
 name = "servo-css-parser"
 version = "0.1.0"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "cssparser 0.25.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "embedder_traits 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
  "selectors 0.21.0 (git+https://github.com/dfrankland/servo-css-parser)",
+ "servo_config 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
  "servo_url 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
  "style 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
  "style_traits 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
@@ -1309,7 +1310,7 @@ dependencies = [
 [[package]]
 name = "servo_arc"
 version = "0.1.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "nodrop 0.1.12 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.80 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1328,7 +1329,7 @@ dependencies = [
 [[package]]
 name = "servo_atoms"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "string_cache 0.7.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "string_cache_codegen 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1337,7 +1338,7 @@ dependencies = [
 [[package]]
 name = "servo_config"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "dirs 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "embedder_traits 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
@@ -1358,7 +1359,7 @@ dependencies = [
 [[package]]
 name = "servo_config_plugins"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "itertools 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "proc-macro2 0.4.26 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1369,7 +1370,7 @@ dependencies = [
 [[package]]
 name = "servo_geometry"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "app_units 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "euclid 0.19.7 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1382,7 +1383,7 @@ dependencies = [
 [[package]]
 name = "servo_rand"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "lazy_static 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1393,7 +1394,7 @@ dependencies = [
 [[package]]
 name = "servo_url"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "malloc_size_of 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
  "malloc_size_of_derive 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1484,7 +1485,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "style"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "app_units 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "arrayvec 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1543,7 +1544,7 @@ dependencies = [
 [[package]]
 name = "style_derive"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "darling 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "derive_common 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
@@ -1556,7 +1557,7 @@ dependencies = [
 [[package]]
 name = "style_traits"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "app_units 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "bitflags 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1643,7 +1644,7 @@ dependencies = [
 [[package]]
 name = "to_shmem"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "cssparser 0.25.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.80 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1657,7 +1658,7 @@ dependencies = [
 [[package]]
 name = "to_shmem_derive"
 version = "0.0.1"
-source = "git+https://github.com/dfrankland/servo-css-parser#480fc9b20451c1bf4077b7124525d9e1bb4945d7"
+source = "git+https://github.com/dfrankland/servo-css-parser#0d8c57a6e781db8fd164767c25da8680b2741fc8"
 dependencies = [
  "darling 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "derive_common 0.0.1 (git+https://github.com/dfrankland/servo-css-parser)",
@@ -1827,7 +1828,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "ucd-util"
-version = "0.1.1"
+version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
@@ -2224,7 +2225,7 @@ dependencies = [
 "checksum tokio-uds 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "424c1ed15a0132251813ccea50640b224c809d6ceafb88154c1a8775873a0e89"
 "checksum try-lock 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "e604eb7b43c06650e854be16a2a03155743d3752dd1c943f6829e26b7a36e382"
 "checksum typenum 1.10.0 (registry+https://github.com/rust-lang/crates.io-index)" = "612d636f949607bdf9b123b4a6f6d966dedf3ff669f7f045890d3a4a73948169"
-"checksum ucd-util 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "fd2be2d6639d0f8fe6cdda291ad456e23629558d466e2789d2c3e9892bda285d"
+"checksum ucd-util 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "535c204ee4d8434478593480b8f86ab45ec9aae0e83c568ca81abf0fd0e88f86"
 "checksum uluru 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d2606e9192f308ddc4f0b3c5d1bf3400e28a70fff956e9d9f46d23b094746d9f"
 "checksum unicase 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "284b6d3db520d67fbe88fd778c21510d1b0ba4a551e5d0fbb023d33405f6de8a"
 "checksum unicode-bidi 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)" = "a6a2c4e3710edd365cd7e78383153ed739fa31af19f9172f72d3575060f5a43a"
