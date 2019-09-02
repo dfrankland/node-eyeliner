@@ -10,8 +10,8 @@ name = "node_eyeliner"
 crate-type = ["dylib"]
 
 [build-dependencies]
-neon-build = "0.2.0"
+neon-build = "0.3.1"
 
 [dependencies]
-neon = "0.2.0"
+neon = "0.3.1"
 eyeliner = { git = "https://github.com/dfrankland/eyeliner.git" }
