@@ -13,5 +13,5 @@ crate-type = ["dylib"]
 neon-build = "0.3.1"
 
 [dependencies]
-neon = "0.3.1"
+neon = "0.8.3"
 eyeliner = { git = "https://github.com/dfrankland/eyeliner.git" }
